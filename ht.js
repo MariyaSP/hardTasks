@@ -1,11 +1,16 @@
-let num = 26621;
+'use strict';
+const myText = "     hgjhg 666 666 979 jhgjfhgjhsdf iuyiuy yeiyiry           ";
 
-let arr = Array.from(num.toString(), Number); // распилили числона массив цифр
+function getEditStr(myString) {
 
-let result = arr.reduce((acc, mult) => acc * mult); // проход по массиву с вычислением значения
+    if (typeof myString !== "string") { return "Не строка"; }
+    else {
+        myString = myString.trim();
+        if (myString.length > 30) {
+            myString = myString.split(0, 31) + "...";
+        }
+        return myString;
+    }
+}
 
-console.log("Результат " + result);
-
-console.log("Возведение в степень " + result**3);
-
-console.log("Первые две цифры результата " + String(result**3).slice(0, 2)); // перевели в строку, вычленили подстроку из нужного количества символов
+console.log('Результат ', getEditStr(myText));
