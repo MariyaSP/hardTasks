@@ -1,0 +1,11 @@
+ul{
+    text-decoration: none;
+    list-style-type: none;
+}
+.weekend{
+    font-style: italic;
+}
+
+.today{
+    font-weight: 600;
+}
