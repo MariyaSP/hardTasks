@@ -1,65 +1,21 @@
 'use strict';
 let now = new Date();
-let myDay = '';
-let myMonth;
-let str = '';
+let k = new Date();
+const options = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+}
 const p = document.createElement('p');
 
-function format1(date) {
-     switch (date.getDay()) {
-        case 1:
-            myDay = 'Понедельник';
-            break;
-        case 2:
-            myDay = 'Вторник';
-            break;
-        case 3:
-            myDay = 'Среда';
-            break;
-        case 4:
-            myDay = 'Четверг';
-            break;
-        case 5:
-            myDay = 'Пятница';
-            break;
-        case 6:
-            myDay = 'Суббота';
-            break;
-        case 7:
-            myDay = 'Воскресенье';
-            break;
-    }
+const str = 'Сегодня ' + now.toLocaleString('ru', options)[0].toUpperCase() + 
+now.toLocaleString('ru', options).substring(1, (now.toLocaleString('ru', options).length - 2)) + 
+'года ' + now.toLocaleString('ru', { hour: 'numeric' }) + ' ' 
++ hourText(now.toLocaleString('ru', { hour: 'numeric' }))+' ' +now.toLocaleString('ru', { minute: 'numeric' })+
+' минут '+now.toLocaleString('ru', { second: 'numeric' })+' секунд';
 
-    switch (date.getMonth()) {
-        case 0:
-            myMonth = 'Января'; break;
-        case 1:
-            myMonth = 'Февраля'; break;
-        case 2:
-            myMonth = 'Марта'; break;
-        case 3:
-            myMonth = 'Апреля'; break;
-        case 4:
-            myMonth = 'Мая'; break;
-        case 5:
-            myMonth = 'Июня'; break;
-        case 6:
-            myMonth = 'Июля'; break;
-        case 7:
-            myMonth = 'Августа'; break;
-        case 8:
-            myMonth = 'Сентября'; break;
-        case 9:
-            myMonth = 'Октября'; break;
-        case 10:
-            myMonth = 'Ноября'; break;
-        case 11:
-            myMonth = 'Декабря'; break;
-    }
-
-    return str = 'Сегодня ' + myDay + ", " + date.getDate() + ' ' + myMonth + ' ' + date.getFullYear() + ' года, ' + date.getHours() + ' ' + hourText(date.getHours()) + ' ' + date.getMinutes() + ' минут ' + date.getSeconds() + ' секунд';
-    ;
-}
+console.log(str);
 
 function hourText(hour) {
     if (hour == 1 || hour == 21) return 'час';
@@ -70,7 +26,7 @@ function hourText(hour) {
 function format2(date) {
 
 
-    return str = zero(date.getDate()) + ":" + zero(date.getMonth()) + ":" + date.getFullYear() + " - " + date.toLocaleTimeString();
+    return  zero(date.getDate()) + ":" + zero(date.getMonth()) + ":" + date.getFullYear() + " - " + date.toLocaleTimeString();
 
 }
 
@@ -87,7 +43,5 @@ setInterval(function () {
     document.body.append(p);
 }, 1000);
 
-
-console.log(format1(now));
-console.log(format2(now));
+console.log(format2(k));
 
