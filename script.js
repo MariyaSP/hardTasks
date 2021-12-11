@@ -7,15 +7,18 @@ const options = {
     month: 'long',
     year: 'numeric',
 }
-const p = document.createElement('p');
+const div = document.createElement('div');
+const p2 = document.createElement('p');
+const p1 = document.createElement('p');
 
-const str = 'Сегодня ' + now.toLocaleString('ru', options)[0].toUpperCase() + 
-now.toLocaleString('ru', options).substring(1, (now.toLocaleString('ru', options).length - 2)) + 
-'года ' + now.toLocaleString('ru', { hour: 'numeric' }) + ' ' 
-+ hourText(now.toLocaleString('ru', { hour: 'numeric' }))+' ' +now.toLocaleString('ru', { minute: 'numeric' })+
-' минут '+now.toLocaleString('ru', { second: 'numeric' })+' секунд';
+p1.textContent = 'Сегодня ' + now.toLocaleString('ru', options)[0].toUpperCase() +
+    now.toLocaleString('ru', options).substring(1, (now.toLocaleString('ru', options).length - 2)) +
+    'года ' + now.toLocaleString('ru', { hour: 'numeric' }) + ' '
+    + hourText(now.toLocaleString('ru', { hour: 'numeric' })) + ' ' + now.toLocaleString('ru', { minute: 'numeric' }) +
+    ' минут ' + now.toLocaleString('ru', { second: 'numeric' }) + ' секунд';
 
-console.log(str);
+div.append(p1);
+document.body.appendChild(div);
 
 function hourText(hour) {
     if (hour == 1 || hour == 21) return 'час';
@@ -24,9 +27,7 @@ function hourText(hour) {
 }
 
 function format2(date) {
-
-
-    return  zero(date.getDate()) + ":" + zero(date.getMonth()) + ":" + date.getFullYear() + " - " + date.toLocaleTimeString();
+    return zero(date.getDate()) + ":" + zero(date.getMonth()) + ":" + date.getFullYear() + " - " + date.toLocaleTimeString();
 
 }
 
@@ -39,9 +40,9 @@ function zero(num) {
 setInterval(function () {
 
     now = new Date();
-    p.textContent = format2(now);
-    document.body.append(p);
+    p2.textContent = format2(now);
+    document.body.append(p2);
 }, 1000);
 
-console.log(format2(k));
+
 
